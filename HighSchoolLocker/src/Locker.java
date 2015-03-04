@@ -1,37 +1,34 @@
-import java.util.Scanner;
-public class Locker
-{static int books=3, right, left, otherRight, firstRight, secondLeft, thirdRight;
-	public static void putBookInLocker()
+public class MainClass
+{
+	static byte Mright=28, Mleft=17,MOtherRight=39,MickeysBooks=3, DonaldsBooks=1,
+			Dright=16, Dleft=35, DOtherRight=27,lockerArray[][]=new byte[3][2];
+	public static void main(String []args)
 	{
-		System.out.println(" locker has "+(books)+" extra books");
-		//System.out.println("locker now has "+(books+1)+" instead of "+books+" in the locker");
+		lockerArray[0][0]=Mright;
+		lockerArray[0][1]=Mleft;
+		lockerArray[1][0]=MOtherRight;
+		lockerArray[1][1]=Dright;
+		lockerArray[2][0]=Dleft;
+		lockerArray[2][1]=DOtherRight;
+		System.out.println("locker 100 given to Mickey Mouse. "
+				+ "\nThe Combination for this locker is "+lockerArray[0][0]+", "+lockerArray[0][1]+", "+lockerArray[1][0]);
+
+		System.out.println("The locker has "+MickeysBooks+" book(s).");
+		System.out.println("Try to open Mickey's locker by using the combination 15, 18, 18");
+		Locker lock= new Locker();
+		lock.openLocker();//goes to method for user to enter combination then goes to method openlock in
+		//in the combination class to see if the combination matches. if it does then it goes to removeBookFromLocker
+		//method, opens and 3 books are added and resetdial method resets it to zero
+		//if not the locker fails to open and the combination is reset to zero
+
+		System.out.println("locker 275 given to Donald Duck. "
+				+ "\nThe Combination for this locker is "+lockerArray[1][1]+", "+lockerArray[2][0]+", "+lockerArray[2][1]);
+
+		System.out.println("This locker has "+DonaldsBooks+" book(s).");
+		System.out.println("Try to open Donald's locker by using the combination 15, 14, 13");
+		lock.openLocker();//goes to method for user to enter combination then goes to method openlock in
+		//in the combination class to see if the combination matches. if it does then it goes to removeBookFromLocker
+		//method, opens and 3 books are added and resetdial method resets it to zero
+		//if not the locker fails to open and the combination is reset to zero
 	}
-	public static void openLocker()
-	{
-		Scanner input=new Scanner(System.in);
-		System.out.println("Input your 3 number locker combination");
-		 firstRight=input.nextInt();
-		 secondLeft=input.nextInt();
-		 thirdRight=input.nextInt();
-		
-		CombinationLock.openLock(firstRight, secondLeft,thirdRight);
-		int reset=CombinationLock.resetDial();	
-		System.out.println("combination lock reset to "+reset);
-	}
-	
-	public static boolean removeBookFromLocker()
-	{
-		//int move =(int)(Math.random() *2);
-		if (Locker.firstRight==MainClass.Mright&&Locker.secondLeft==MainClass.Mleft
-				&&Locker.thirdRight==MainClass.MotherRight || 
-		(Locker.firstRight==MainClass.Dright&&Locker.secondLeft==MainClass.Dleft
-		&&Locker.thirdRight==MainClass.DotherRight))
-		{
-			System.out.println("1 book has been removed");
-			return true;
-		}
-		System.out.println("1 book has not been removed");
-		return false;
-	}
-	
 }
